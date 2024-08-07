@@ -4,8 +4,7 @@
   "icons": [
     {
       "src": "Telegram.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "type": "image/png"
     }
   ],
   "start_url": ".",
