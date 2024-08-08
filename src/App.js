@@ -6,7 +6,7 @@ import SuccessPage from './Components/successPage';
 
 function App() {
   return (
-    <Router>
+    <Router basename='https://henry1234-net.github.io/todo-list'>
       <Routes>
         <Route path="/" element={<LoginSignUp />} />
         <Route path="/success" element={<SuccessPage />} />
